@@ -1,0 +1,37 @@
+name: two_node_networking
+
+topology:
+  nodes:
+    office_computer:
+      kind: linux
+      image: alpine:latest
+      exec:
+        - sh /scripts/init.sh 24
+      binds:
+        - ./scripts/workstation:/scripts
+    office_switch:
+      kind: linux
+      image: frrouting/frr:latest
+      exec:
+        - sh /scripts/init.sh
+      binds:
+        - ./scripts/switch:/scripts
+    office_router:
+      kind: linux
+      image: frrouting/frr:latest
+      exec:
+        - sh /scripts/init.sh
+      binds:
+        - ./scripts/router:/scripts
+    secondary_computer:
+      kind: linux
+      image: alpine:latest
+      exec:
+        - sh /scripts/init.sh 41
+      binds:
+        - ./scripts/workstation:/scripts
+
+  links:
+    - endpoints: ['office_computer:eth1', 'office_switch:eth2']
+    - endpoints: ['office_switch:eth1', 'office_router:eth1']
+    - endpoints: ['secondary_computer:eth1', 'office_router:eth2']
