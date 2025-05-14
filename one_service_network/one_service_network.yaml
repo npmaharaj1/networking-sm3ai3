@@ -2,4 +2,40 @@ name: one_service_network
 
 topology:
   nodes:
-    
+    terminal_shop:
+      kind: linux
+      image: alpine:latest
+      exec:
+        - sh /scripts/init.sh
+      binds:
+        - ./scripts/shop:/scripts
+        - ./shared:/shared
+    workstation1:
+      kind: linux
+      image: alpine:latest
+      exec:
+        - sh /scripts/init.sh
+      binds:
+        - ./scripts/workstation:/scripts
+        - ./shared/:/shared
+
+    switch1:
+      kind: linux
+      image: frrouting/frr:latest
+      exec:
+        - sh /scripts/init.sh
+      binds:
+        - ./scripts/switch:/scripts
+
+    router1:
+      kind: linux
+      image: frrouting/frr:latest
+      exec:
+        - sh /scripts/init.sh
+      binds:
+        - ./scripts/router:/scripts
+
+  links:
+    - endpoints: ['switch1:eth1', 'router1:eth1']
+    - endpoints: ['terminal_shop:eth1', 'switch1:eth2']
+    - endpoints: ['workstation1:eth1', 'switch1:eth3']

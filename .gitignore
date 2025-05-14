@@ -1,3 +1,4 @@
 *.bak
 clab-two_node_networking/
 *.tar.gz/
+*.out

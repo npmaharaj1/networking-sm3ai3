@@ -28,4 +28,4 @@ understood however though since machines were simply connected via their own
 docker network.
 
 ## Journal 2: One service network
-
+challenges: unable to find node switch
