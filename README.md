@@ -63,7 +63,7 @@ verification as well as tidying up small things. However, most of these issues
 were subverted with the ~/.ssh/config file. This was also how I created the
 alias, terminal.shop.
 
-Insert picture of topology
+![](./one_service_network/assets/topology.png)
 
 Through this part of the assessment, I further deepened my understanding on both
 the quirkyness of linux systems as well as a brush up on different languages. I
