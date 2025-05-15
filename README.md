@@ -95,5 +95,7 @@ will take turns in handling requests.
 
 This network is an example of horizontal
 scaling where the only way to effectively balance requests, is to add more
-machines. In the making of this container, I 
-
+machines. In the making of this container, I opted to modify most of the given
+files such as the file layout to use the shell arguments as said before. I also
+used my own networking init scripts to change the primary network to frrouting
+as opposed to its own docker network counterpart
