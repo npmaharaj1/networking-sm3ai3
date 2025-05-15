@@ -74,3 +74,26 @@ ssh session as soon as the shop program is shut or suspended manually using
 completely disabling passworded logins or creating keys for root.
 
 ## Journal 3: Load balancer and two service nodes network
+__Installation and Usage__
+```bash
+username@localhost~$ sudo containerlab deploy -t load_balancer_and_two_service_nodes_network.yaml
+username@localhost~$ curl http://{local ip}:8000/ # Replace local ip with your own private ip address. localhost dns name is hit or miss
+```
+
+__Reflection__  
+This topology recreates a simple load balancer network. Inspiration was taken
+from teacher's resources but modified as I saw fit to be more resource
+conservative. In the backend, when a user connects to their local port 8000,
+containerlab binds that to port 80 for the load balancers docker container.
+HAProxy (load balancing software) then takes the request and forwards it to one
+of the nginx powered webservers. Modern load balancers will have a record of 
+each servers system load, but assumes all requests will be even. As a result, it
+forwards requests to servers in a round robin fashion, meaning that each server
+will take turns in handling requests.
+
+![](./load_balancer_and_two_service_nodes_network/assets/topology.yaml)
+
+This network is an example of horizontal
+scaling where the only way to effectively balance requests, is to add more
+machines. In the making of this container, I 
+
