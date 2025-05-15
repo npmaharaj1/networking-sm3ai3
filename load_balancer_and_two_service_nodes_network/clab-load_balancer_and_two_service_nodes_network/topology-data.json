@@ -1,0 +1,247 @@
+{
+  "name": "load_balancer_and_two_service_nodes_network",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-bdc8622c46db",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "3fff:172:20:20::/64",
+        "ipv6-gw": "3fff:172:20:20::1",
+        "mtu": 1500,
+        "external-access": true
+      }
+    }
+  },
+  "ssh-pub-keys": ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC6fhUtuJBrCGtFalmkPRouPm6kNQodyhE/qFJ7j7FZ4d2/3+nECHyAKYI+46uHGVfiK7aL1KP9RrLxeRW2PWxP9bH2IqwVuIkpnFjD+ka1Y/MTvDIFPi0fedgS3K96aHE/ipggYmZlvBASsmVv9+qb6M2y3MlxcMnUZGgY3eZcZVO2muSE04BOjkArl8YVJE3agxhABNKU8qi3I9mzM6Jb8BHXjJNmRhSzwUfeb/NR8sOMayGp0lffTwOt2IfN/iy2BbXDToq+BmFwXy0wtp7mvYRJGkTG9hlY4Qk8QoeKufYJcyAozP4VE2ad+ho4GMzdregjASKN3lyzhavN4KEo666ZxCwzc04mxEhGLQadxQ5OCONcwGmoB4O70wlqHk3nq3kAq2J45vcAteGyPTarRUpW4UHgUojoBBF8AdwWrfxuSvPKThVmL/pyUj3YTX65T92G+G/Ff4lSWxHpd45shRgI4UeZViEWkNzhUI9R7LFXoTHrInYM6URhtD2q3/U=","ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDM4zx5TUzwFR3m4PGyZYF9j/59Lpj6lDE0A2SyLycvlaU5HTyAZWAP4BLzU+rRoFW4UJ5smPvwguI+nclMn/nNfdJ6KpwKL1k3ROzdJ0fQ43shpYXGK1qiYE7MlTlGWLanl/lsSJjaLIItzcO5G9KzjbRSkG3chk0PUyoJSbjATnsQ0KIHmjmPpOq343GVmnE6SAhssd4EkiO2NjFX4r2dDG5QA6UUevbmE5oDpE4sV3+Zn2f4Y0f8uDY1BqY1SOjps4XXrEjkSwfzCfhllWCXrY5cJbIjNy1C75N40GAgiaKfyQ1fOJKO++ZjrXio+KS5AxD1T0Vf4dtyyqizTjGFkFBUqN/jFA4bAHGJGQjzrXxzscYqDrONpjN7mnIfiV2vxskgm15w/8fo2VQVQZfvzUzPcc1sYvFhhSbddkM5lqDnR98BtkpRVVSoWeBwm3dlGp/T3keFpfzDjHtJnX7ALO+G8P56vJ8UL4sCfI1QTocUDoWOkpocHg8sWjxdvE1D9gIjqTTfvdSN0l/dAF4aWvrH30AM7gfxpDFhHCI+dIXfmTPK/02thUJKLG9ZXPbmoE23iKzF+uMfjSdMPvwPbQyuIuqcBus9V4/98E5Qe5h3z7GOQu/mBQX/Y72k32RU5pIbPKYIDXnN8xBFK5CRSQvxg8VoI0uPzlQP88jCHQ=="],
+  "nodes": {
+    "loadbalancer": {
+      "index": "0",
+      "shortname": "loadbalancer",
+      "longname": "clab-load_balancer_and_two_service_nodes_network-loadbalancer",
+      "fqdn": "loadbalancer.load_balancer_and_two_service_nodes_network.io",
+      "group": "",
+      "labdir": "/home/nishant/Projects/networking-sm3ai3/load_balancer_and_two_service_nodes_network/clab-load_balancer_and_two_service_nodes_network/loadbalancer",
+      "kind": "linux",
+      "image": "alpine:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.4",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::4",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-bdc8622c46db",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nishant/Projects/networking-sm3ai3/load_balancer_and_two_service_nodes_network/clab-load_balancer_and_two_service_nodes_network/loadbalancer",
+        "clab-node-longname": "clab-load_balancer_and_two_service_nodes_network-loadbalancer",
+        "clab-node-name": "loadbalancer",
+        "clab-node-type": "",
+        "clab-owner": "nishant",
+        "clab-topo-file": "/home/nishant/Projects/networking-sm3ai3/load_balancer_and_two_service_nodes_network/load_balancer_and_two_service_nodes_network.yaml",
+        "containerlab": "load_balancer_and_two_service_nodes_network"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "0.0.0.0",
+          "host-port": 8000,
+          "port": 80,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "::",
+          "host-port": 8000,
+          "port": 80,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "router1": {
+      "index": "1",
+      "shortname": "router1",
+      "longname": "clab-load_balancer_and_two_service_nodes_network-router1",
+      "fqdn": "router1.load_balancer_and_two_service_nodes_network.io",
+      "group": "",
+      "labdir": "/home/nishant/Projects/networking-sm3ai3/load_balancer_and_two_service_nodes_network/clab-load_balancer_and_two_service_nodes_network/router1",
+      "kind": "linux",
+      "image": "frrouting/frr:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.5",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::5",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-bdc8622c46db",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nishant/Projects/networking-sm3ai3/load_balancer_and_two_service_nodes_network/clab-load_balancer_and_two_service_nodes_network/router1",
+        "clab-node-longname": "clab-load_balancer_and_two_service_nodes_network-router1",
+        "clab-node-name": "router1",
+        "clab-node-type": "",
+        "clab-owner": "nishant",
+        "clab-topo-file": "/home/nishant/Projects/networking-sm3ai3/load_balancer_and_two_service_nodes_network/load_balancer_and_two_service_nodes_network.yaml",
+        "containerlab": "load_balancer_and_two_service_nodes_network"
+      },
+      "port-bindings": [
+      ]
+    },
+    "server1": {
+      "index": "2",
+      "shortname": "server1",
+      "longname": "clab-load_balancer_and_two_service_nodes_network-server1",
+      "fqdn": "server1.load_balancer_and_two_service_nodes_network.io",
+      "group": "",
+      "labdir": "/home/nishant/Projects/networking-sm3ai3/load_balancer_and_two_service_nodes_network/clab-load_balancer_and_two_service_nodes_network/server1",
+      "kind": "linux",
+      "image": "alpine:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.3",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::3",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-bdc8622c46db",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nishant/Projects/networking-sm3ai3/load_balancer_and_two_service_nodes_network/clab-load_balancer_and_two_service_nodes_network/server1",
+        "clab-node-longname": "clab-load_balancer_and_two_service_nodes_network-server1",
+        "clab-node-name": "server1",
+        "clab-node-type": "",
+        "clab-owner": "nishant",
+        "clab-topo-file": "/home/nishant/Projects/networking-sm3ai3/load_balancer_and_two_service_nodes_network/load_balancer_and_two_service_nodes_network.yaml",
+        "containerlab": "load_balancer_and_two_service_nodes_network"
+      },
+      "port-bindings": [
+      ]
+    },
+    "server2": {
+      "index": "3",
+      "shortname": "server2",
+      "longname": "clab-load_balancer_and_two_service_nodes_network-server2",
+      "fqdn": "server2.load_balancer_and_two_service_nodes_network.io",
+      "group": "",
+      "labdir": "/home/nishant/Projects/networking-sm3ai3/load_balancer_and_two_service_nodes_network/clab-load_balancer_and_two_service_nodes_network/server2",
+      "kind": "linux",
+      "image": "alpine:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.2",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::2",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-bdc8622c46db",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nishant/Projects/networking-sm3ai3/load_balancer_and_two_service_nodes_network/clab-load_balancer_and_two_service_nodes_network/server2",
+        "clab-node-longname": "clab-load_balancer_and_two_service_nodes_network-server2",
+        "clab-node-name": "server2",
+        "clab-node-type": "",
+        "clab-owner": "nishant",
+        "clab-topo-file": "/home/nishant/Projects/networking-sm3ai3/load_balancer_and_two_service_nodes_network/load_balancer_and_two_service_nodes_network.yaml",
+        "containerlab": "load_balancer_and_two_service_nodes_network"
+      },
+      "port-bindings": [
+      ]
+    },
+    "switch1": {
+      "index": "4",
+      "shortname": "switch1",
+      "longname": "clab-load_balancer_and_two_service_nodes_network-switch1",
+      "fqdn": "switch1.load_balancer_and_two_service_nodes_network.io",
+      "group": "",
+      "labdir": "/home/nishant/Projects/networking-sm3ai3/load_balancer_and_two_service_nodes_network/clab-load_balancer_and_two_service_nodes_network/switch1",
+      "kind": "linux",
+      "image": "frrouting/frr:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.6",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::6",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-bdc8622c46db",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nishant/Projects/networking-sm3ai3/load_balancer_and_two_service_nodes_network/clab-load_balancer_and_two_service_nodes_network/switch1",
+        "clab-node-longname": "clab-load_balancer_and_two_service_nodes_network-switch1",
+        "clab-node-name": "switch1",
+        "clab-node-type": "",
+        "clab-owner": "nishant",
+        "clab-topo-file": "/home/nishant/Projects/networking-sm3ai3/load_balancer_and_two_service_nodes_network/load_balancer_and_two_service_nodes_network.yaml",
+        "containerlab": "load_balancer_and_two_service_nodes_network"
+      },
+      "port-bindings": [
+      ]
+    }
+  },
+  "links": [
+    {
+      "a": {
+        "node": "router1",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:be:1f:a9",
+        "peer": "z"
+      },
+      "z": {
+        "node": "switch1",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:be:42:9f",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "server1",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:79:e6:21",
+        "peer": "z"
+      },
+      "z": {
+        "node": "switch1",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:6a:1d:a7",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "server2",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:a6:f8:ec",
+        "peer": "z"
+      },
+      "z": {
+        "node": "switch1",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:13:ab:bb",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "loadbalancer",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:37:4c:5b",
+        "peer": "z"
+      },
+      "z": {
+        "node": "switch1",
+        "interface": "eth4",
+        "mac": "aa:c1:ab:ce:9d:cf",
+        "peer": "a"
+      }
+    }
+  ]
+}

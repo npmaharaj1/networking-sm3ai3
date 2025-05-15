@@ -1,0 +1,55 @@
+name: load_balancer_and_two_service_nodes_network
+
+topology:
+  nodes:
+    router1:
+      kind: linux
+      image: frrouting/frr:latest
+      exec:
+        - sh /scripts/init.sh
+      binds:
+        - ./scripts/router/:/scripts/
+
+    switch1:
+      kind: linux
+      image: frrouting/frr:latest
+      exec:
+        - sh /scripts/init.sh
+      binds:
+        - ./scripts/switch/:/scripts/
+ 
+    loadbalancer:
+      kind: linux
+      image: alpine:latest
+      binds:
+        - ./loadbalancer/haproxy.cfg:/etc/haproxy/haproxy.cfg
+        - ./scripts/loadbalancer/:/scripts/
+      exec:
+        - sh /scripts/init.sh 14
+      ports:
+        - 8000:80
+
+    server1:
+      kind: linux
+      image: alpine:latest
+      binds:
+        - ./servers/nginx/nginx.conf:/etc/nginx/nginx.conf
+        - ./scripts/server/:/scripts/
+      exec:
+        - sh /scripts/init.sh 11
+
+    server2:
+      kind: linux
+      image: alpine:latest
+      binds:
+        - ./servers/nginx/nginx.conf:/etc/nginx/nginx.conf
+        - ./scripts/server/:/scripts/
+      exec:
+        - sh /scripts/init.sh 12
+
+
+  links:
+    - endpoints: ['router1:eth1', 'switch1:eth1']
+    - endpoints: ['server1:eth1', 'switch1:eth2']
+    - endpoints: ['server2:eth1', 'switch1:eth3']
+    - endpoints: ['loadbalancer:eth1', 'switch1:eth4']
