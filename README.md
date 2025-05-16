@@ -1,6 +1,5 @@
-# networking-sm3ai3
-
-![](./assets/ai3.mkv)
+## Video Demo
+Video demo is located in `assets/ai3.mkv`
 
 ## Things I learnt overall
 ```
