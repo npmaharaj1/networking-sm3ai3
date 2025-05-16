@@ -1,5 +1,7 @@
 # networking-sm3ai3
 
+![](./assets/ai3.mkv)
+
 ## Things I learnt overall
 ```
 As per style guide:
